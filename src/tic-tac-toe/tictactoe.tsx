@@ -20,6 +20,10 @@ const INITIAL_GRID = [
   [null, null, null],
 ];
 
+const styles = {
+  "&:hover": { color: "red" },
+};
+
 export const TicTacToe = () => {
   const [grid, setGrid] = React.useState<GridState>(INITIAL_GRID);
   const [winner, setWinner] = React.useState<Winner>();

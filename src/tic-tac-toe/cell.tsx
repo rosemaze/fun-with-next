@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import clsx from "clsx";
 import { Marker } from "./tictactoe";
 
 interface Props {
@@ -9,8 +10,6 @@ interface Props {
 }
 
 export const Cell = ({ marker, onClick, disabled }: Props) => {
-  const textColor = `text-${marker === "X" ? "lime" : "rose"}-500`;
-
   return (
     <>
       <button
@@ -19,11 +18,12 @@ export const Cell = ({ marker, onClick, disabled }: Props) => {
           onClick(event);
         }}
         style={{ height: "90px", fontSize: "32px" }}
-        className={
-          disabled
-            ? textColor
-            : `font-bold ${textColor} border border-transparent hover:border-gray-300 hover:bg-gray-100`
-        }
+        className={clsx({
+          "font-bold border border-transparent hover:border-gray-300 hover:bg-gray-100":
+            !disabled,
+          "text-lime-500": marker === "X",
+          "text-rose-500": marker === "O",
+        })}
       >
         {marker}
       </button>
