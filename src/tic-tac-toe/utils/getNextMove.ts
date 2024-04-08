@@ -1,5 +1,4 @@
 import {
-  CompletedCells,
   DIAGONAL_TOPLEFT_BOTTOMRIGHT,
   DIAGONAL_TOPRIGHT_BOTTOMLEFT,
   HORIZONTAL_BOTTOM,
@@ -8,6 +7,7 @@ import {
   VERTICAL_CENTER,
   VERTICAL_LEFT,
   VERTICAL_RIGHT,
+  WinnerLine,
 } from "../grid";
 import { GridState, Marker } from "../tictactoe";
 
@@ -189,7 +189,7 @@ export const getCompletedCells = ({
   grid: GridState;
   marker: Marker;
   completedThreshold?: 2 | 3;
-}): { cells: Array<[number, number]>; type: CompletedCells } => {
+}): { cells: Array<[number, number]>; type: WinnerLine } => {
   let cells = [grid[0][0], grid[1][1], grid[2][2]];
   if (getMarkerCount({ cells, marker }) >= completedThreshold) {
     return {
